@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6192c6f07b4dd98dd98f7fabeabf954b",
+    "content-hash": "879a7f48e21b26d218214cb25ec210d2",
     "packages": [
         {
             "name": "asmblah/php-code-shift",
-            "version": "dev-caching",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asmblah/php-code-shift.git",
-                "reference": "28ca3142f33eafe7c9a087ef45ed07f787e032d1"
+                "reference": "b8ec241334dec2050955b2f3f1adfc377cfa32f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asmblah/php-code-shift/zipball/28ca3142f33eafe7c9a087ef45ed07f787e032d1",
-                "reference": "28ca3142f33eafe7c9a087ef45ed07f787e032d1",
+                "url": "https://api.github.com/repos/asmblah/php-code-shift/zipball/b8ec241334dec2050955b2f3f1adfc377cfa32f2",
+                "reference": "b8ec241334dec2050955b2f3f1adfc377cfa32f2",
                 "shasum": ""
             },
             "require": {
@@ -47,9 +47,9 @@
             ],
             "support": {
                 "issues": "https://github.com/asmblah/php-code-shift/issues",
-                "source": "https://github.com/asmblah/php-code-shift/tree/caching"
+                "source": "https://github.com/asmblah/php-code-shift/tree/v0.1.2"
             },
-            "time": "2023-11-20T07:26:37+00:00"
+            "time": "2023-11-22T07:29:04+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -109,20 +109,19 @@
         },
         {
             "name": "nytris/bundle",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nytris/bundle.git",
-                "reference": "21e679054fc0ad2015710db2dac95dd38dd4638f"
+                "reference": "4b338b69cde8adfde0217640d6568420b0aad349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nytris/bundle/zipball/21e679054fc0ad2015710db2dac95dd38dd4638f",
-                "reference": "21e679054fc0ad2015710db2dac95dd38dd4638f",
+                "url": "https://api.github.com/repos/nytris/bundle/zipball/4b338b69cde8adfde0217640d6568420b0aad349",
+                "reference": "4b338b69cde8adfde0217640d6568420b0aad349",
                 "shasum": ""
             },
             "require": {
-                "asmblah/php-code-shift": "@dev",
                 "nytris/nytris": "^0.1",
                 "php": ">=8.1",
                 "symfony/config": "^5.0",
@@ -150,9 +149,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nytris/bundle/issues",
-                "source": "https://github.com/nytris/bundle/tree/v0.1.0"
+                "source": "https://github.com/nytris/bundle/tree/v0.1.1"
             },
-            "time": "2023-11-15T08:48:33+00:00"
+            "time": "2023-11-22T07:46:50+00:00"
         },
         {
             "name": "nytris/nytris",
@@ -2100,16 +2099,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.43",
+            "version": "1.10.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "2c4129f6ca8c7cfa870098884b8869b410a5a361"
+                "reference": "bf84367c53a23f759513985c54ffe0d0c249825b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2c4129f6ca8c7cfa870098884b8869b410a5a361",
-                "reference": "2c4129f6ca8c7cfa870098884b8869b410a5a361",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/bf84367c53a23f759513985c54ffe0d0c249825b",
+                "reference": "bf84367c53a23f759513985c54ffe0d0c249825b",
                 "shasum": ""
             },
             "require": {
@@ -2158,7 +2157,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-19T19:55:25+00:00"
+            "time": "2023-11-21T16:30:46+00:00"
         },
         {
             "name": "phpstan/phpstan-mockery",
@@ -3600,9 +3599,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "asmblah/php-code-shift": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
