@@ -1,0 +1,9 @@
+framework:
+    test: true
+
+nytris_shift:
+    logger:
+        service: Nytris\SymfonyPlugin\Shift\Tests\Functional\Util\TestLogger
+
+services:
+    Nytris\SymfonyPlugin\Shift\Tests\Functional\Util\TestLogger: ~

@@ -14,19 +14,21 @@ declare(strict_types=1);
 namespace Nytris\SymfonyPlugin\Shift\DependencyInjection;
 
 use Exception;
+use Nytris\SymfonyPlugin\Shift\Package\Initialiser;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * Class ShiftSymfonyExtension.
+ * Class NytrisShiftExtension.
  *
  * @author Dan Phillimore <dan@ovms.co>
  */
-class ShiftSymfonyExtension extends Extension
+class NytrisShiftExtension extends Extension
 {
     /**
      * @inheritdoc
@@ -36,6 +38,10 @@ class ShiftSymfonyExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        // Import common configuration.
         $fileLocator = new FileLocator(__DIR__ . '/../Resources/config');
         $loader = new DirectoryLoader($container, $fileLocator);
         $yamlFileLoader = new YamlFileLoader($container, $fileLocator);
@@ -44,5 +50,20 @@ class ShiftSymfonyExtension extends Extension
             $loader,
         ]));
         $loader->load('services/');
+
+        // Configure PHP Code Shift.
+        $loggerConfig = $config['logger'] ?? [];
+        $loggerServiceId = $loggerConfig['service'] ?? null;
+        $loggerChannel = $loggerConfig['channel'] ?? null;
+
+        $initialiserDefinition = $container->findDefinition(Initialiser::class);
+
+        if ($loggerServiceId !== null) {
+            $initialiserDefinition->setArgument(0, new Reference($loggerServiceId));
+        }
+
+        if ($loggerChannel !== null) {
+            $initialiserDefinition->addTag('monolog.logger', ['channel' => $loggerChannel]);
+        }
     }
 }

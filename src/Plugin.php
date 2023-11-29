@@ -15,7 +15,8 @@ namespace Nytris\SymfonyPlugin\Shift;
 
 use Asmblah\PhpCodeShift\ShiftPackage;
 use Nytris\Bundle\Plugin\PluginInterface;
-use Nytris\SymfonyPlugin\Shift\DependencyInjection\ShiftSymfonyExtension;
+use Nytris\SymfonyPlugin\Shift\DependencyInjection\NytrisShiftExtension;
+use Nytris\SymfonyPlugin\Shift\Package\Initialiser;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -33,6 +34,9 @@ class Plugin implements PluginInterface
      */
     public function boot(ContainerInterface $container): void
     {
+        $initialiser = $container->get(Initialiser::class);
+
+        $initialiser->initialise();
     }
 
     /**
@@ -40,7 +44,7 @@ class Plugin implements PluginInterface
      */
     public function build(ContainerBuilder $container): void
     {
-        $container->registerExtension(new ShiftSymfonyExtension());
+        $container->registerExtension(new NytrisShiftExtension());
     }
 
     /**

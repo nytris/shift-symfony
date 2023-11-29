@@ -1,0 +1,6 @@
+framework:
+    test: true
+
+nytris_shift:
+    logger:
+        channel: my_channel
