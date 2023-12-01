@@ -4,9 +4,11 @@ services:
         autoconfigure: true
         public: false
 
-    Nytris\SymfonyPlugin\Shift\Cache\CacheClearer: ~
-
-    Nytris\SymfonyPlugin\Shift\Cache\CacheWarmer: ~
+    Nytris\SymfonyPlugin\Shift\:
+        resource: '../../../'
+        exclude:
+            - '../../../bootstrap.php'
+            - '../../../Plugin.php'
 
     Asmblah\PhpCodeShift\Shift: ~
     Asmblah\PhpCodeShift\ShiftInterface: '@Asmblah\PhpCodeShift\Shift'

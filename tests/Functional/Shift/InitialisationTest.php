@@ -17,14 +17,14 @@ use Asmblah\PhpCodeShift\Shift;
 use Asmblah\PhpCodeShift\ShiftInterface;
 use Nytris\SymfonyPlugin\Shift\Tests\Functional\AbstractKernelTestCase;
 use Nytris\SymfonyPlugin\Shift\Tests\Functional\Util\TestLogger;
-use Symfony\Bridge\Monolog\Logger as MonologLogger;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * Class ConfigurationTest.
+ * Class InitialisationTest.
  *
  * @author Dan Phillimore <dan@ovms.co>
  */
-class ConfigurationTest extends AbstractKernelTestCase
+class InitialisationTest extends AbstractKernelTestCase
 {
     private ShiftInterface $shift;
 
@@ -33,30 +33,17 @@ class ConfigurationTest extends AbstractKernelTestCase
         $this->shift = new Shift();
     }
 
-    public function testLoggerIsSetWhenConfigured(): void
+    public function testLoggerIsNotChangedOnReboot(): void
     {
         static::bootKernel(['environment' => 'explicit_logger']);
         $this->dispatchConsoleCommandEvent();
-
-        static::assertInstanceOf(TestLogger::class, $this->shift->getLogger());
-    }
-
-    public function testChannelIsSetWhenConfigured(): void
-    {
-        static::bootKernel(['environment' => 'explicit_channel']);
-        $this->dispatchConsoleCommandEvent();
-
         $logger = $this->shift->getLogger();
+        /** @var Kernel $kernel */
+        $kernel = static::$kernel;
 
-        static::assertInstanceOf(MonologLogger::class, $logger);
-        static::assertSame('my_channel', $logger->getName());
-    }
+        $kernel->reboot(null);
 
-    public function testDefaultMonologLoggerIsUsedWhenNotConfigured(): void
-    {
-        static::bootKernel(['environment' => 'not_configured']);
-        $this->dispatchConsoleCommandEvent();
-
-        static::assertInstanceOf(MonologLogger::class, $this->shift->getLogger());
+        static::assertSame($logger, $this->shift->getLogger());
+        static::assertInstanceOf(TestLogger::class, $logger);
     }
 }

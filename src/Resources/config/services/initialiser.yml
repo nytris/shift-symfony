@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: false
-
-    Nytris\SymfonyPlugin\Shift\Package\Initialiser:
-        # Will be configured by NytrisShiftExtension.
-        public: true
